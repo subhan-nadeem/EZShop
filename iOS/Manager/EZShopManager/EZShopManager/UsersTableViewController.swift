@@ -7,23 +7,91 @@
 //
 
 import UIKit
+import SwiftyJSON
+import FirebaseDatabase
+import Kingfisher
+
+protocol UserTableDelgate {
+	func didSelectUser(user: User)
+}
 
 class UsersTableViewController: UITableViewController {
+	var delegate: UserTableDelgate?
+	var ref: FIRDatabaseReference!
+	var showInStore = true
+	@IBAction func segView(_ sender: UISegmentedControl) {
+		showInStore = sender.selectedSegmentIndex == 0
+		tableView.reloadData()
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		tableView.tableFooterView = UIView()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+		ref = FIRDatabase.database().reference()
+		let refHandle = ref.observe(FIRDataEventType.value, with: { (snapshot) in
+			let db = JSON(snapshot.value)
+			//print(db["users"])
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+			if let _users = db["users"].dictionary {
+				self.users.removeAll()
+				_users.forEach({ (_, _userJSON) in
+					let new = User()
+					print(_userJSON["user_id"].stringValue)
+					new.name = _userJSON["name"].stringValue
+					new.photo = _userJSON["photo"].stringValue
+					new.user_id = _userJSON["user_id"].stringValue
+					new.isInStore = _userJSON["is_in_store"].boolValue
+
+					if let store = db["store"].dictionary {
+						if let _items = store[new.user_id]?["cart"].arrayObject as? [Int] {
+							_items.forEach({ (_item_id) in
+								let newItem = Item()
+								newItem.item_id = _item_id
+
+								let _itemDetails = db["inventories"][_item_id].dictionaryValue
+								newItem.item_name = _itemDetails["item_name"]!.stringValue
+								newItem.item_price = _itemDetails["item_price"]!.doubleValue
+								new.items.append(newItem)
+							})
+						}
+					}
+					print(new.items)
+					self.users.append(new)
+				})
+
+				self.tableView.reloadData()
+
+					if self.selecteedIndex != nil {
+						if (self.selecteedIndex?.row)! < self.dataSource().count {
+							self.delegate?.didSelectUser(user: self.dataSource()[(self.selecteedIndex?.row)!])
+						}
+				}
+
+
+			}
+		})
+	}
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+	var selecteedIndex:IndexPath?
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		delegate?.didSelectUser(user: dataSource()[indexPath.row])
+
+		if selecteedIndex != nil {
+			tableView.cellForRow(at: selecteedIndex!)?.accessoryType = .none
+		}
+		selecteedIndex = indexPath
+		tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
 
     // MARK: - Table view data source
 
@@ -32,22 +100,34 @@ class UsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dataSource().count
     }
+
+	var users: [User] = []
+
+	func dataSource() -> [User] {
+		return users.filter({ (user) -> Bool in
+			if showInStore {
+				return user.isInStore
+			}
+			return true
+		})
+	}
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-
+		let user = dataSource()[indexPath.row]
 		if let imageView = cell.viewWithTag(100) as? UIImageView {
 			imageView.layer.cornerRadius = imageView.frame.width/2
 			imageView.clipsToBounds = true
+			imageView.kf.setImage(with: URL(string: user.photo))
 		}
 
 		if let nameLabel = cell.viewWithTag(101) as? UILabel {
-			nameLabel.text = "Heihi"
+			nameLabel.text = user.name
 		}
-
+		cell.accessoryType = .none
         return cell
     }
 

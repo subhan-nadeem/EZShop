@@ -91,11 +91,9 @@ class EnrollViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 	func enrollUser(image: UIImage) {
 		uploadImage(image: image)
-		let ref = FIRDatabase.database().reference()
-		ref.child(uuid).setValue( ["name": userNameLabel.text!,
-		                           "photo": "\(uuid).jpg"])
-	}
 
+	}
+var photoURL = ""
 	func uploadImage(image: UIImage) {
 		let storage = FIRStorage.storage()
 		// Create a root reference
@@ -114,7 +112,14 @@ class EnrollViewController: UIViewController, UIImagePickerControllerDelegate, U
     return
 			}
 			// Metadata contains file metadata such as size, content-type, and download URL.
-			let downloadURL = metadata.downloadURL
+			self.photoURL = metadata.downloadURLs!.first!.absoluteString
+			let ref = FIRDatabase.database().reference()
+			ref.child("users").child(self.uuid).setValue(
+				["name": self.userNameLabel.text!,
+				 "user_id": self.uuid,
+				 "is_in_store": false,
+				 "photo": self.photoURL])
+			self.userNameLabel.text = ""
 
 		}
 	}
@@ -203,7 +208,7 @@ class EnrollViewController: UIViewController, UIImagePickerControllerDelegate, U
 									self.enrollUser(image: self.images[2])
 									self.images.removeAll()
 									ActivityIndicator.shared.hide()
-									self.userNameLabel.text = ""
+
 									self.tabBarController?.selectedIndex = 1
 								}
 							}
