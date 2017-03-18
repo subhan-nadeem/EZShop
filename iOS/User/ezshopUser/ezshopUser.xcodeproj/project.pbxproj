@@ -393,6 +393,7 @@
 				CODE_SIGN_ENTITLEMENTS = ezshopUser/ezshopUser.entitlements;
 				DEVELOPMENT_TEAM = VQJM9GW22Y;
 				INFOPLIST_FILE = ezshopUser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jgchoi.ezshopUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +412,7 @@
 				CODE_SIGN_ENTITLEMENTS = ezshopUser/ezshopUser.entitlements;
 				DEVELOPMENT_TEAM = VQJM9GW22Y;
 				INFOPLIST_FILE = ezshopUser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jgchoi.ezshopUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";

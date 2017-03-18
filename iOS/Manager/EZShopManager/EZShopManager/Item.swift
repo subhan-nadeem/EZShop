@@ -12,5 +12,7 @@ class Item {
 	var item_name = ""
 	var item_id = 0
 	var item_price = 0.0
-	
+	var item_description = ""
+	var item_image = ""
+	var item_count = 0
 }

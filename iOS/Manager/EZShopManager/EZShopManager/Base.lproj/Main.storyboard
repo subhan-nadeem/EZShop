@@ -187,6 +187,89 @@
             </objects>
             <point key="canvasLocation" x="2308.59375" y="1732.8125"/>
         </scene>
+        <!--Inventory-->
+        <scene sceneID="A8c-ck-KMm">
+            <objects>
+                <viewController id="Esx-mS-mCC" customClass="InventoriesViewController" customModule="EZShopManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PvM-X8-vYc"/>
+                        <viewControllerLayoutGuide type="bottom" id="5D4-N6-Prp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gtq-jE-wmm">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PtE-K8-tnj">
+                                <rect key="frame" x="20" y="28" width="984" height="691"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="llg-PP-fhM">
+                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="Q69-XF-92J">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-xA-i5C">
+                                                    <rect key="frame" x="8" y="8" width="284" height="202"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbZ-KC-zFn">
+                                                    <rect key="frame" x="8" y="216" width="284" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OT-sH-pfE">
+                                                    <rect key="frame" x="8" y="237" width="284" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stock Level:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8Q-nZ-Kx8">
+                                                    <rect key="frame" x="8" y="271" width="185" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQT-lg-3BC">
+                                                    <rect key="frame" x="254" y="268" width="38" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Esx-mS-mCC" id="21W-Tj-ANw"/>
+                                    <outlet property="delegate" destination="Esx-mS-mCC" id="3lM-Tu-6Bg"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Inventory" image="medical-notes-symbol-of-a-list-paper-on-a-clipboard" id="TVe-Zj-hHi"/>
+                    <connections>
+                        <outlet property="collectionView" destination="PtE-K8-tnj" id="mOO-1c-p7M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1C1-7A-ILx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1093.9453125" y="2300"/>
+        </scene>
         <!--Users Table View Controller-->
         <scene sceneID="Gyg-sV-iPb">
             <objects>
@@ -285,6 +368,7 @@
                     <connections>
                         <segue destination="jrT-Ry-Wgi" kind="relationship" relationship="viewControllers" id="EUh-Ud-Tgd"/>
                         <segue destination="Oyz-y9-zJo" kind="relationship" relationship="viewControllers" id="T0C-4q-YLb"/>
+                        <segue destination="Esx-mS-mCC" kind="relationship" relationship="viewControllers" id="a7b-vq-Yzw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55x-hX-ohF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,6 +397,7 @@
     </scenes>
     <resources>
         <image name="cat" width="480" height="532"/>
+        <image name="medical-notes-symbol-of-a-list-paper-on-a-clipboard" width="32" height="32"/>
         <image name="store" width="32" height="32"/>
         <image name="user" width="32" height="32"/>
     </resources>

@@ -26,23 +26,27 @@ class EnrollViewController: UIViewController, UIImagePickerControllerDelegate, U
 			JGUtils.alert(title: "ERROR", message: "Enter user name")
 		}
 		uuid = UUID().uuidString
+		userNameLabel.resignFirstResponder()
+		JGUtils.alert(title: "Instruction", message: "Hold ipad on your eye level. It will take 3 photos. Press OK to start") { 
+			let imagePicker = CLFaceDetectionImagePickerViewController()
+			imagePicker.delegate = self
 
-		let imagePicker = CLFaceDetectionImagePickerViewController()
-		imagePicker.delegate = self
+			self.present(imagePicker, animated: true)
+			let view = UIView(frame: self.view.frame)
+			view.backgroundColor = UIColor.white
 
-		present(imagePicker, animated: true)
-		let view = UIView(frame: self.view.frame)
-		view.backgroundColor = UIColor.white
+			let label = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: view.frame.width, height: 100)))
+			label.text = self.messages[self.images.count]
+			label.font = UIFont.systemFont(ofSize: 50)
+			label.sizeToFit()
 
-		let label = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: view.frame.width, height: 100)))
-		label.text = messages[images.count]
-		label.font = UIFont.systemFont(ofSize: 50)
-		label.sizeToFit()
+			view.addSubview(label)
+			label.center = view.center
+			self.view.addSubview(view)
+			self.tempMessageContainer = view
+		}
 
-		view.addSubview(label)
-		label.center = view.center
-		self.view.addSubview(view)
-		tempMessageContainer = view
+
 //		imagePicker.view.tintColor = view.tintColor
 //		imagePicker.sourceType = .camera
 //		imagePicker.delegate = self
