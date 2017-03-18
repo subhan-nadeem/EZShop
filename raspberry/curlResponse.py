@@ -1,28 +1,21 @@
 # some kind of authenticatin or a secret here
 import json
 import urllib2
+import requests
 
-get_url = 'https://hackvalley-5be01.firebaseio.com/inventories/{id}/item_count.json'
+url = 'https://hackvalley-5be01.firebaseio.com/inventories/2/item_count.json'
+patch_url = 'https://hackvalley-5be01.firebaseio.com/inventories/2/.json'
 
-item_id = 7
+item_id = 2
 
-req = urllib2.Request(get_url.format(id=item_id))
-req.add_header('type', 'GET')
+response = urllib2.urlopen(url.format(id=item_id)).read()
+json_response = json.loads(response)
+json_response -= 1
 
-response = urllib2.urlopen(req)
-print response
-
-"""
-url = 'https://hackvalley-5be01.firebaseio.com/inventories/{id}/item_count'
-
-postdata = {
-	'item_count': str()
-}
-
-req = urllib2.Request(url)
+req = urllib2.Request(patch_url.format(id=item_id))
 req.add_header('Content-Type', 'application/json')
-req.add_header('type', 'PUT')
-data = json.dumps(postdata)
+req.add_header('type', 'PATCH')
 
-response = urllib2.urlopen(req, data)
-"""
+data = json.dumps({'item_count': json_response})
+
+response = requests.patch(patch_url.format(id=item_id), data)
