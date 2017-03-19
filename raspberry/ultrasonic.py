@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO_TRIGGER = 18
 GPIO_ECHO = 24
 
-BOTTLE_SIZE = 6 # cm
+BOTTLE_SIZE = 7 # cm
 MARGIN_ERR = 2  # cm
 EMPTY_D = 60  # cm
 ITEM_ID = 2
@@ -43,6 +43,8 @@ def distance_changed():
     d = (time_elapsed * 34300) / 2
     
     num_bottles = ((EMPTY_D - d) / BOTTLE_SIZE)
+
+    # print math.floor(d)
 
     return int(math.floor(abs(num_bottles)))
 
