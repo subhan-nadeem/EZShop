@@ -535,12 +535,9 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                     } catch (JSONException e1) {
                                                         Log.e(TAG, e1.toString());
 
-                                                        if (mRecognitionAttempts != MAX_RECOGNITION_ATTEMPTS) {
-                                                            recognize(false, true);
-
-                                                                ttsObj.speak("I couldn't recognize you! Trying again", TextToSpeech.QUEUE_ADD, null);
+                                                                ttsObj.speak("I couldn't recognize you!", TextToSpeech.QUEUE_ADD, null);
                                                             ++mRecognitionAttempts;
-                                                        }
+
                                                     }
                                                 }
                                             });
@@ -699,7 +696,12 @@ public final class FaceTrackingActivity extends AppCompatActivity
         mUserDatabase.child(candidate.getUUID()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mUserFCMToken = dataSnapshot.child("fcm_token").getValue().toString();
+                try {
+                    mUserFCMToken = dataSnapshot.child("fcm_token").getValue().toString();
+                }
+                catch (Exception e) {
+                    Log.e(TAG, e.toString());
+                }
             }
 
             @Override
@@ -736,7 +738,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
     private void sendPushNotification(double totalSpent) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        if (mUserFCMToken.equals("invalid")) return;
+        if (mUserFCMToken == null || mUserFCMToken.equals("invalid")) return;
 
         JsonObject dataObj = new JsonObject();
         dataObj.addProperty("alert", "Your total is $" + df.format(totalSpent));
@@ -761,6 +763,8 @@ public final class FaceTrackingActivity extends AppCompatActivity
                         Log.d(TAG, "PUSH RESULT: " + result);
                     }
                 });
+
+        mUserFCMToken = null;
     }
 
     private void enterUserIntoShop(final RecognitionCandidate candidate) throws JSONException {
