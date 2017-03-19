@@ -15,7 +15,7 @@ PIN_3_CIRCUIT = 31
 
 DARK = 40000
 LIGHT = 0
-REFRESH_RATE = 0.05
+REFRESH_RATE = 0.1
 
 item_map = {
     PIN_1_CIRCUIT: 1,
@@ -74,10 +74,10 @@ def rc_time(pin_to_circuit):
         item_status[pin_to_circuit] = True
 
 
-# thread1 = myThread(PIN_1_CIRCUIT)
-thread2 = MyThread(PIN_2_CIRCUIT)
+thread1 = MyThread(PIN_1_CIRCUIT)
+# thread2 = MyThread(PIN_2_CIRCUIT)
 # thread3 = MyThread(PIN_3_CIRCUIT)
 
-# thread1.start()
-thread2.start()
-#thread3.start()
+thread1.start()
+# thread2.start()
+# thread3.start()
