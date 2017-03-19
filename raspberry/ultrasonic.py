@@ -2,6 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 from InventoryClient import *
+import math
 
 # GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
@@ -10,18 +11,18 @@ GPIO.setmode(GPIO.BCM)
 GPIO_TRIGGER = 18
 GPIO_ECHO = 24
 
-BOTTLE_SIZE = 6  # cm
+BOTTLE_SIZE = 6 # cm
 MARGIN_ERR = 2  # cm
-EMPTY_D = 58  # cm
+EMPTY_D = 60  # cm
 ITEM_ID = 2
-REFERSH_RATE = 1  # seconds
+REFERSH_RATE = 2  # seconds
 
 # set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
 GPIO.setup(GPIO_ECHO, GPIO.IN)
 
 
-def distance_changed(initial_load):
+def distance_changed():
 
     GPIO.output(GPIO_TRIGGER, True)
 
@@ -40,31 +41,26 @@ def distance_changed(initial_load):
     time_elapsed = stop_time - start_time
 
     d = (time_elapsed * 34300) / 2
-    num_bottles = (EMPTY_D - d) / BOTTLE_SIZE
+    
+    num_bottles = ((EMPTY_D - d) / BOTTLE_SIZE)
 
-    if num_bottles > 0:
-        if num_bottles != initial_load:
-            print "Number of bottles has changed {0}->{1}".format(
-                initial_load, num_bottles)
-    else:
-        print "There are currently {0} bottles".format(num_bottles)
-
-    return item_load
+    return int(math.floor(abs(num_bottles)))
 
 
 if __name__ == '__main__':
     item_load = get_item_inventory(ITEM_ID)
-
+    
     try:
         while True:
-            new_load = distance_changed(item_load)
-            if new_load != item_load:
-                update_events(ITEM_ID)
+            items = distance_changed()
+            if item_load != items:
                 update_inventory(ITEM_ID)
+                update_events(ITEM_ID)
+                item_load = items
+                print items
 
             time.sleep(REFERSH_RATE)
 
-            # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
         GPIO.cleanup()
