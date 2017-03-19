@@ -31,6 +31,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -52,7 +53,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-import com.loopj.android.http.Base64;
 import com.subhan_nadeem.android.gms.samples.vision.face.facetracker.App;
 import com.subhan_nadeem.android.gms.samples.vision.face.facetracker.FaceGraphic;
 import com.subhan_nadeem.android.gms.samples.vision.face.facetracker.FaceProximityListener;
@@ -111,9 +111,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
     private ProgressBar mProgressBar;
     private int mPurpose;
     private long mLastTriggerTime;
-    //==============================================================================================
-    // Activity Methods
-    //==============================================================================================
     private ArrayList<Integer> alreadyRecognizedFacesList = new ArrayList<>();
     private DatabaseReference mDatabase;
     private DatabaseReference mUserDatabase;
@@ -449,7 +446,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
         if (timeSinceLastTrigger < TimeUnit.SECONDS.toMillis(NUM_SECONDS_WAIT_BETWEEN_RECOGNIZE))
             return;
 
-
         alreadyRecognizedFacesList.add(face.getId());
         mLastTriggerTime = System.currentTimeMillis();
         mRecognitionAttempts = 1;
@@ -509,7 +505,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                         JSONArray imagesArray = jsonObject.getJSONArray("images");
                                                         JSONObject firstImageObject = imagesArray.getJSONObject(0);
 
-
                                                         JSONObject transactionObject =
                                                                 firstImageObject.getJSONObject("transaction");
 
@@ -538,10 +533,9 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                         Log.e(TAG, e1.toString());
 
                                                         if (mRecognitionAttempts != MAX_RECOGNITION_ATTEMPTS) {
-                                                            recognize(false, sayRetryMessage);
+                                                            recognize(false, true);
 
-                                                            if (sayRetryMessage)
-                                                            ttsObj.speak("I couldn't recognize you! Trying again", TextToSpeech.QUEUE_ADD, null);
+                                                                ttsObj.speak("I couldn't recognize you! Trying again", TextToSpeech.QUEUE_ADD, null);
                                                             ++mRecognitionAttempts;
                                                         }
                                                     }
@@ -560,10 +554,17 @@ public final class FaceTrackingActivity extends AppCompatActivity
         });
     }
 
+    private String mItemPersonName;
+    private String mItemItemName;
     private void onDetectItemEvent(final RecognitionCandidate candidate) {
         final DatabaseReference userCartDatabase = mDatabase.child("store")
                 .child(candidate.getUUID())
                 .child("cart");
+
+        getPersonNameForItemTTS(candidate);
+
+        getItemNameForItemTTS();
+
         userCartDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             boolean itemAdded = false;
 
@@ -571,13 +572,50 @@ public final class FaceTrackingActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (!itemAdded)
-                    userCartDatabase.removeEventListener(this);
                 userCartDatabase.child(String.valueOf(dataSnapshot.getChildrenCount()))
                         .setValue(mItemPickedUp);
 
                 itemAdded = true;
                 removeEvents();
                 mItemPickedUp = NO_ITEM_PICKED_UP;
+
+                ttsObj.speak(mItemPersonName + " picked up a "+mItemItemName, TextToSpeech.QUEUE_ADD, null);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getItemNameForItemTTS() {
+        mInventoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                    if (item.child("item_id").getValue().toString().equals(String.valueOf(mItemPickedUp))) {
+                        mItemItemName = item.child("item_id").getValue().toString();
+                        return;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getPersonNameForItemTTS(RecognitionCandidate candidate) {
+        mUserDatabase.child(candidate.getUUID()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+
+                mItemPersonName = user.name;
             }
 
             @Override
@@ -616,11 +654,9 @@ public final class FaceTrackingActivity extends AppCompatActivity
                 if (!user.is_in_store)
                     return;
 
-
                 mUserDatabase.child(candidate.getUUID()).child("is_in_store").setValue(false);
                 ttsObj.speak("Goodbye, " + user.name + "! Thank you for shopping at easyshop",
                         TextToSpeech.QUEUE_ADD, null);
-
 
                 final DatabaseReference userCartDatabase = mDatabase.child("store")
                         .child(candidate.getUUID())
@@ -636,7 +672,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
                         }
 
                         calculateCartTotal(cartItems);
-
 
                     }
 
