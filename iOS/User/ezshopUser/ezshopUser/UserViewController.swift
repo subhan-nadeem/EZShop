@@ -21,8 +21,11 @@ var ref: FIRDatabaseReference!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var totalLabel: UILabel!
 	@IBAction func logout(_ sender: Any) {
+		ref.child("users").child(User.instance.user_id).updateChildValues(["fcm_token":"invalid"])
 		User.instance = User()
+
 		User.setUserName(name: "")
+
 		performSegue(withIdentifier: "ShowLogin", sender: nil)
 	}
 	@IBOutlet weak var statusLabel: UILabel!
@@ -33,11 +36,12 @@ var ref: FIRDatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		
-
-
-		updateView()
 		imageView.layer.cornerRadius = imageView.frame.width/2
+		imageView.clipsToBounds = true
+
+		circleView.layer.cornerRadius = circleView.frame.width/2
+		updateView()
+
 
 		self.ref = FIRDatabase.database().reference()
 
@@ -62,13 +66,16 @@ var ref: FIRDatabaseReference!
 								print(store[new.user_id])
 								print(_items)
 								_items.forEach({ (_item_id) in
-									let newItem = Item()
-									newItem.item_id = _item_id
+									if _item_id > 0 {
+										let newItem = Item()
+										newItem.item_id = _item_id
 
-									let _itemDetails = db["inventories"][_item_id].dictionaryValue
-									newItem.item_name = _itemDetails["item_name"]!.stringValue
-									newItem.item_price = _itemDetails["item_price"]!.doubleValue
-									new.items.append(newItem)
+										let _itemDetails = db["inventories"][_item_id].dictionaryValue
+										newItem.item_name = _itemDetails["item_name"]!.stringValue
+										newItem.item_price = _itemDetails["item_price"]!.doubleValue
+										new.items.append(newItem)
+									}
+
 								})
 							}
 						}
@@ -93,19 +100,45 @@ var ref: FIRDatabaseReference!
 		}
 		nameLabel.text = User.instance.name
 		statusLabel.text = User.instance.isInStore ? "Currently you are in store" : "Currently you are not in store"
-		circleView.layer.cornerRadius = circleView.frame.width/2
+
 		circleView.clipsToBounds = true
-		circleView.backgroundColor = User.instance.isInStore ? UIColor.green : UIColor.red
+
+var transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+//		circleView.transform = CGAffineTransform.identity
+//		imageView.transform = CGAffineTransform.identity
+
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: [], animations: { 
+			var transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+			self.circleView.transform = transform
+			self.imageView.transform = transform
+
+		}) { (_) in
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: [], animations: { 
+				self.circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+				self.imageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+
+
+				self.circleView.backgroundColor = User.instance.isInStore ? UIColor.green : UIColor.red
+			}, completion: nil)
+
+		}
+
+
+
+
+
 		tableView.tableFooterView = UIView()
 		cartCover.removeFromSuperview()
 		imageView.kf.setImage(with: URL(string: User.instance.photo))
-		if User.instance.items.count == 0 || !User.instance.isInStore {
+		if User.instance.items.count == 0 {
 			cartCover = UIView(frame: tableView.frame)
 			cartCover.backgroundColor = UIColor.white
-			let label = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 50)))
+			let label = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 20)))
 			label.text = "Cart is Empty"
+			label.textColor = UIColor.black.withAlphaComponent(0.5)
 			label.textAlignment = .center
-			label.font = UIFont.boldSystemFont(ofSize: 50)
+			label.frame = CGRect(x: 0, y: tableView.frame.height/2, width: tableView.frame.width, height: 30)
+			label.font = UIFont.italicSystemFont(ofSize: 15)
 			//			label.center = cartCover.center
 			cartCover.addSubview(label)
 			view.addSubview(cartCover)

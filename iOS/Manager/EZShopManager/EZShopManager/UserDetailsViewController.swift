@@ -61,7 +61,7 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
 var cartCover = UIView()
 	 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-		return user.isInStore ? user.items.count : 0
+		return user.items.count
 	}
 
 

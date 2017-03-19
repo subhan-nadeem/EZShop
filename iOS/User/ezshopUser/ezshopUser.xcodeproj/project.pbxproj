@@ -12,7 +12,6 @@
 		D24519291E7D8488000ECC03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24519281E7D8488000ECC03 /* ViewController.swift */; };
 		D245192C1E7D8488000ECC03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D245192A1E7D8488000ECC03 /* Main.storyboard */; };
 		D245192E1E7D8488000ECC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D245192D1E7D8488000ECC03 /* Assets.xcassets */; };
-		D24519311E7D8488000ECC03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */; };
 		D24519391E7D8568000ECC03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24519381E7D8568000ECC03 /* GoogleService-Info.plist */; };
 		D245193C1E7D86E1000ECC03 /* JGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245193A1E7D86E1000ECC03 /* JGUtils.swift */; };
 		D245193D1E7D86E2000ECC03 /* ActivitiyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245193B1E7D86E1000ECC03 /* ActivitiyIndicator.swift */; };
@@ -23,6 +22,7 @@
 		D245194B1E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24519471E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard */; };
 		D245194C1E7D967A000ECC03 /* UIImage+CL.m in Sources */ = {isa = PBXBuildFile; fileRef = D24519491E7D967A000ECC03 /* UIImage+CL.m */; };
 		D245194E1E7D96E7000ECC03 /* kairos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245194D1E7D96E7000ECC03 /* kairos.swift */; };
+		D25E556A1E7E2542000B18D8 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E55691E7E2542000B18D8 /* HudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		D24519281E7D8488000ECC03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D245192B1E7D8488000ECC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D245192D1E7D8488000ECC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D24519301E7D8488000ECC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D24519321E7D8488000ECC03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D24519381E7D8568000ECC03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D245193A1E7D86E1000ECC03 /* JGUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGUtils.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		D24519491E7D967A000ECC03 /* UIImage+CL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CL.m"; sourceTree = "<group>"; };
 		D245194D1E7D96E7000ECC03 /* kairos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kairos.swift; sourceTree = "<group>"; };
 		D25E55661E7DB939000B18D8 /* ezshopUser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ezshopUser.entitlements; sourceTree = "<group>"; };
+		D25E55691E7E2542000B18D8 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +108,7 @@
 				D24519471E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard */,
 				D24519481E7D967A000ECC03 /* UIImage+CL.h */,
 				D24519491E7D967A000ECC03 /* UIImage+CL.m */,
+				D25E55691E7E2542000B18D8 /* HudView.swift */,
 				D24519261E7D8488000ECC03 /* AppDelegate.swift */,
 				D24519281E7D8488000ECC03 /* ViewController.swift */,
 				D245194D1E7D96E7000ECC03 /* kairos.swift */,
@@ -118,7 +119,6 @@
 				D245192A1E7D8488000ECC03 /* Main.storyboard */,
 				D245193E1E7D8728000ECC03 /* User.swift */,
 				D245192D1E7D8488000ECC03 /* Assets.xcassets */,
-				D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */,
 				D24519321E7D8488000ECC03 /* Info.plist */,
 				D24519421E7D8BB5000ECC03 /* UserViewController.swift */,
 				D24519441E7D9679000ECC03 /* ezshopUser-Bridging-Header.h */,
@@ -195,7 +195,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D24519311E7D8488000ECC03 /* LaunchScreen.storyboard in Resources */,
 				D245194B1E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard in Resources */,
 				D24519391E7D8568000ECC03 /* GoogleService-Info.plist in Resources */,
 				D245192E1E7D8488000ECC03 /* Assets.xcassets in Resources */,
@@ -265,6 +264,7 @@
 				D245194E1E7D96E7000ECC03 /* kairos.swift in Sources */,
 				D245193D1E7D86E2000ECC03 /* ActivitiyIndicator.swift in Sources */,
 				D245193F1E7D8728000ECC03 /* User.swift in Sources */,
+				D25E556A1E7E2542000B18D8 /* HudView.swift in Sources */,
 				D24519411E7D872C000ECC03 /* Item.swift in Sources */,
 				D245194C1E7D967A000ECC03 /* UIImage+CL.m in Sources */,
 				D24519271E7D8488000ECC03 /* AppDelegate.swift in Sources */,
@@ -280,14 +280,6 @@
 				D245192B1E7D8488000ECC03 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D24519301E7D8488000ECC03 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
