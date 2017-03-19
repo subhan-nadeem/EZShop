@@ -1,53 +1,70 @@
-#Libraries
+# Libraries
 import RPi.GPIO as GPIO
 import time
- 
-#GPIO Mode (BOARD / BCM)
+from InventoryClient import *
+
+# GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
- 
-#set GPIO Pins
+
+# set GPIO Pins
 GPIO_TRIGGER = 18
 GPIO_ECHO = 24
- 
-#set GPIO direction (IN / OUT)
+
+BOTTLE_SIZE = 6  # cm
+MARGIN_ERR = 2  # cm
+EMPTY_D = 58  # cm
+ITEM_ID = 2
+REFERSH_RATE = 1  # seconds
+
+# set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
 GPIO.setup(GPIO_ECHO, GPIO.IN)
- 
-def distance():
-    # set Trigger to HIGH
+
+
+def distance_changed(initial_load):
+
     GPIO.output(GPIO_TRIGGER, True)
- 
-    # set Trigger after 0.01ms to LOW
+
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
- 
-    StartTime = time.time()
-    StopTime = time.time()
- 
-    # save StartTime
+
+    start_time = time.time()
+    stop_time = time.time()
+
     while GPIO.input(GPIO_ECHO) == 0:
-        StartTime = time.time()
- 
-    # save time of arrival
+        start_time = time.time()
+
     while GPIO.input(GPIO_ECHO) == 1:
-        StopTime = time.time()
- 
-    # time difference between start and arrival
-    TimeElapsed = StopTime - StartTime
-    # multiply with the sonic speed (34300 cm/s)
-    # and divide by 2, because there and back
-    distance = (TimeElapsed * 34300) / 2
- 
-    return distance
- 
+        stop_time = time.time()
+
+    time_elapsed = stop_time - start_time
+
+    d = (time_elapsed * 34300) / 2
+    num_bottles = (EMPTY_D - d) / BOTTLE_SIZE
+
+    if num_bottles > 0:
+        if num_bottles != initial_load:
+            print "Number of bottles has changed {0}->{1}".format(
+                initial_load, num_bottles)
+    else:
+        print "There are currently {0} bottles".format(num_bottles)
+
+    return item_load
+
+
 if __name__ == '__main__':
+    item_load = get_item_inventory(ITEM_ID)
+
     try:
         while True:
-            dist = distance()
-            print ("Measured Distance = %.1f cm" % dist)
-            time.sleep(1)
- 
-        # Reset by pressing CTRL + C
+            new_load = distance_changed(item_load)
+            if new_load != item_load:
+                update_events(ITEM_ID)
+                update_inventory(ITEM_ID)
+
+            time.sleep(REFERSH_RATE)
+
+            # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
         GPIO.cleanup()
