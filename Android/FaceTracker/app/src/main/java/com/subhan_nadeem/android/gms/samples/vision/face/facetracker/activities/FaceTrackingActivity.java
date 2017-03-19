@@ -169,23 +169,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
 
         mItemPickedUp = NO_ITEM_PICKED_UP;
 
-
-        mPreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCameraSource.takePicture(new CameraSource.ShutterCallback() {
-                    @Override
-                    public void onShutter() {
-                    }
-                }, new CameraSource.PictureCallback() {
-                    @Override
-                    public void onPictureTaken(byte[] bytes) {
-                        Log.d(TAG, "Picture taken!");
-                    }
-                });
-            }
-        });
-
         initializeSwitchCameraButton();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
