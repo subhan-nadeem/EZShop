@@ -117,13 +117,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 												print(store[new.user_id])
 												print(_items)
 												_items.forEach({ (_item_id) in
-													let newItem = Item()
-													newItem.item_id = _item_id
+													if _item_id > 0 {
+														let newItem = Item()
+														newItem.item_id = _item_id
 
-													let _itemDetails = db["inventories"][_item_id].dictionaryValue
-													newItem.item_name = _itemDetails["item_name"]!.stringValue
-													newItem.item_price = _itemDetails["item_price"]!.doubleValue
-													new.items.append(newItem)
+														let _itemDetails = db["inventories"][_item_id].dictionaryValue
+														newItem.item_name = _itemDetails["item_name"]!.stringValue
+														newItem.item_price = _itemDetails["item_price"]!.doubleValue
+														new.items.append(newItem)
+													}
 												})
 											}
 										}
@@ -138,7 +140,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 								JGUtils.alert(title: "ERROR", message: "This user is not registered")
 							} else {
 								//							User.setUserName(name: self.userNameLabel.text!)
-								JGUtils.alert(title: "WELCOME", message: "Hello \(User.instance.name)\n\n\(confidence)% confidence", closure: {
+								JGUtils.alert(title: "WELCOME", message: "Hello, \(User.instance.name)!", closure: {
 									ActivityIndicator.shared.hide()
 									self.performSegue(withIdentifier: "ShowUser", sender: nil)
 								})
@@ -187,13 +189,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 								print(store[new.user_id])
 								print(_items)
 								_items.forEach({ (_item_id) in
-									let newItem = Item()
-									newItem.item_id = _item_id
+									if _item_id > 0 {
+										let newItem = Item()
+										newItem.item_id = _item_id
 
-									let _itemDetails = db["inventories"][_item_id].dictionaryValue
-									newItem.item_name = _itemDetails["item_name"]!.stringValue
-									newItem.item_price = _itemDetails["item_price"]!.doubleValue
-									new.items.append(newItem)
+										let _itemDetails = db["inventories"][_item_id].dictionaryValue
+										newItem.item_name = _itemDetails["item_name"]!.stringValue
+										newItem.item_price = _itemDetails["item_price"]!.doubleValue
+										new.items.append(newItem)
+									}
 								})
 							}
 						}

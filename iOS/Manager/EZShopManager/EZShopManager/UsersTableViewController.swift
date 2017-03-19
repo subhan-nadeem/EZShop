@@ -45,14 +45,18 @@ class UsersTableViewController: UITableViewController {
 
 					if let store = db["store"].dictionary {
 						if let _items = store[new.user_id]?["cart"].arrayObject as? [Int] {
-							_items.forEach({ (_item_id) in
-								let newItem = Item()
-								newItem.item_id = _item_id
 
-								let _itemDetails = db["inventories"][_item_id].dictionaryValue
-								newItem.item_name = _itemDetails["item_name"]!.stringValue
-								newItem.item_price = _itemDetails["item_price"]!.doubleValue
-								new.items.append(newItem)
+							_items.forEach({ (_item_id) in
+								if _item_id > 0 {
+									let newItem = Item()
+									newItem.item_id = _item_id
+
+									let _itemDetails = db["inventories"][_item_id].dictionaryValue
+									newItem.item_name = _itemDetails["item_name"]!.stringValue
+									newItem.item_price = _itemDetails["item_price"]!.doubleValue
+									new.items.append(newItem)
+
+								}
 							})
 						}
 					}

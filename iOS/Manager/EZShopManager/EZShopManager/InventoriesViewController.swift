@@ -87,6 +87,12 @@ var ref: FIRDatabaseReference!
 			label.text = "\(item.item_count)"
 		}
 
+		if item.item_count == 0 {
+			cell.backgroundColor = UIColor.red
+		} else {
+			cell.backgroundColor = UIColor.clear
+		}
+
 
 		return cell
 	}
