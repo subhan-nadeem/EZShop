@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -522,8 +523,13 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                             ++mRecognitionAttempts;
 
                                                         if (repeat) {
-                                                            ttsObj.speak("Trying again...", TextToSpeech.QUEUE_ADD, null);
-                                                            recognize(false, true);
+                                                            ttsObj.speak("Trying again! Please look at the camera", TextToSpeech.QUEUE_ADD, null);
+                                                            (new Handler()).postDelayed(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    recognize(false, true);
+                                                                }
+                                                            }, 5000);
                                                         }
                                                     }
                                                 }
