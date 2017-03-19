@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C43599ED3F692D8EA185E21 /* Pods_ezshopUser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DBEF9CAFC2C0D784347B44 /* Pods_ezshopUser.framework */; };
+		D24519271E7D8488000ECC03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24519261E7D8488000ECC03 /* AppDelegate.swift */; };
+		D24519291E7D8488000ECC03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24519281E7D8488000ECC03 /* ViewController.swift */; };
+		D245192C1E7D8488000ECC03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D245192A1E7D8488000ECC03 /* Main.storyboard */; };
+		D245192E1E7D8488000ECC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D245192D1E7D8488000ECC03 /* Assets.xcassets */; };
+		D24519311E7D8488000ECC03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */; };
+		D24519391E7D8568000ECC03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24519381E7D8568000ECC03 /* GoogleService-Info.plist */; };
+		D245193C1E7D86E1000ECC03 /* JGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245193A1E7D86E1000ECC03 /* JGUtils.swift */; };
+		D245193D1E7D86E2000ECC03 /* ActivitiyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245193B1E7D86E1000ECC03 /* ActivitiyIndicator.swift */; };
+		D245193F1E7D8728000ECC03 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245193E1E7D8728000ECC03 /* User.swift */; };
+		D24519411E7D872C000ECC03 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24519401E7D872B000ECC03 /* Item.swift */; };
+		D24519431E7D8BB5000ECC03 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24519421E7D8BB5000ECC03 /* UserViewController.swift */; };
+		D245194A1E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24519461E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.m */; };
+		D245194B1E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24519471E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard */; };
+		D245194C1E7D967A000ECC03 /* UIImage+CL.m in Sources */ = {isa = PBXBuildFile; fileRef = D24519491E7D967A000ECC03 /* UIImage+CL.m */; };
+		D245194E1E7D96E7000ECC03 /* kairos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245194D1E7D96E7000ECC03 /* kairos.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		46DBEF9CAFC2C0D784347B44 /* Pods_ezshopUser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ezshopUser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB79685D4C2A6A6E0AA60A0 /* Pods-ezshopUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ezshopUser.release.xcconfig"; path = "Pods/Target Support Files/Pods-ezshopUser/Pods-ezshopUser.release.xcconfig"; sourceTree = "<group>"; };
+		A1A2C175D85E21E953053C9F /* Pods-ezshopUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ezshopUser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ezshopUser/Pods-ezshopUser.debug.xcconfig"; sourceTree = "<group>"; };
+		D24519231E7D8488000ECC03 /* ezshopUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ezshopUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24519261E7D8488000ECC03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D24519281E7D8488000ECC03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D245192B1E7D8488000ECC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D245192D1E7D8488000ECC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D24519301E7D8488000ECC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D24519321E7D8488000ECC03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D24519381E7D8568000ECC03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D245193A1E7D86E1000ECC03 /* JGUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGUtils.swift; sourceTree = "<group>"; };
+		D245193B1E7D86E1000ECC03 /* ActivitiyIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiyIndicator.swift; sourceTree = "<group>"; };
+		D245193E1E7D8728000ECC03 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D24519401E7D872B000ECC03 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D24519421E7D8BB5000ECC03 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		D24519441E7D9679000ECC03 /* ezshopUser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ezshopUser-Bridging-Header.h"; sourceTree = "<group>"; };
+		D24519451E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFaceDetectionImagePickerViewController.h; sourceTree = "<group>"; };
+		D24519461E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFaceDetectionImagePickerViewController.m; sourceTree = "<group>"; };
+		D24519471E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CLFaceDetectionImagePicker.storyboard; sourceTree = "<group>"; };
+		D24519481E7D967A000ECC03 /* UIImage+CL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CL.h"; sourceTree = "<group>"; };
+		D24519491E7D967A000ECC03 /* UIImage+CL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CL.m"; sourceTree = "<group>"; };
+		D245194D1E7D96E7000ECC03 /* kairos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kairos.swift; sourceTree = "<group>"; };
+		D25E55661E7DB939000B18D8 /* ezshopUser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ezshopUser.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D24519201E7D8488000ECC03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C43599ED3F692D8EA185E21 /* Pods_ezshopUser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46A7531CE6AD3C575B28D8F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46DBEF9CAFC2C0D784347B44 /* Pods_ezshopUser.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93DD57EF27D561F811E3E7B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1A2C175D85E21E953053C9F /* Pods-ezshopUser.debug.xcconfig */,
+				9DB79685D4C2A6A6E0AA60A0 /* Pods-ezshopUser.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D245191A1E7D8488000ECC03 = {
+			isa = PBXGroup;
+			children = (
+				D24519251E7D8488000ECC03 /* ezshopUser */,
+				D24519241E7D8488000ECC03 /* Products */,
+				93DD57EF27D561F811E3E7B9 /* Pods */,
+				46A7531CE6AD3C575B28D8F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D24519241E7D8488000ECC03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D24519231E7D8488000ECC03 /* ezshopUser.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D24519251E7D8488000ECC03 /* ezshopUser */ = {
+			isa = PBXGroup;
+			children = (
+				D25E55661E7DB939000B18D8 /* ezshopUser.entitlements */,
+				D24519451E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.h */,
+				D24519461E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.m */,
+				D24519471E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard */,
+				D24519481E7D967A000ECC03 /* UIImage+CL.h */,
+				D24519491E7D967A000ECC03 /* UIImage+CL.m */,
+				D24519261E7D8488000ECC03 /* AppDelegate.swift */,
+				D24519281E7D8488000ECC03 /* ViewController.swift */,
+				D245194D1E7D96E7000ECC03 /* kairos.swift */,
+				D24519381E7D8568000ECC03 /* GoogleService-Info.plist */,
+				D245193A1E7D86E1000ECC03 /* JGUtils.swift */,
+				D245193B1E7D86E1000ECC03 /* ActivitiyIndicator.swift */,
+				D24519401E7D872B000ECC03 /* Item.swift */,
+				D245192A1E7D8488000ECC03 /* Main.storyboard */,
+				D245193E1E7D8728000ECC03 /* User.swift */,
+				D245192D1E7D8488000ECC03 /* Assets.xcassets */,
+				D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */,
+				D24519321E7D8488000ECC03 /* Info.plist */,
+				D24519421E7D8BB5000ECC03 /* UserViewController.swift */,
+				D24519441E7D9679000ECC03 /* ezshopUser-Bridging-Header.h */,
+			);
+			path = ezshopUser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D24519221E7D8488000ECC03 /* ezshopUser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D24519351E7D8488000ECC03 /* Build configuration list for PBXNativeTarget "ezshopUser" */;
+			buildPhases = (
+				2D1D2BA193C910B06E941C1C /* [CP] Check Pods Manifest.lock */,
+				D245191F1E7D8488000ECC03 /* Sources */,
+				D24519201E7D8488000ECC03 /* Frameworks */,
+				D24519211E7D8488000ECC03 /* Resources */,
+				644B469D43ED3347FE34FB69 /* [CP] Embed Pods Frameworks */,
+				DC4E51C36AD8EA294A1B31B1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ezshopUser;
+			productName = ezshopUser;
+			productReference = D24519231E7D8488000ECC03 /* ezshopUser.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D245191B1E7D8488000ECC03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Jung Geon Choi";
+				TargetAttributes = {
+					D24519221E7D8488000ECC03 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = VQJM9GW22Y;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = D245191E1E7D8488000ECC03 /* Build configuration list for PBXProject "ezshopUser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D245191A1E7D8488000ECC03;
+			productRefGroup = D24519241E7D8488000ECC03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D24519221E7D8488000ECC03 /* ezshopUser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D24519211E7D8488000ECC03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24519311E7D8488000ECC03 /* LaunchScreen.storyboard in Resources */,
+				D245194B1E7D967A000ECC03 /* CLFaceDetectionImagePicker.storyboard in Resources */,
+				D24519391E7D8568000ECC03 /* GoogleService-Info.plist in Resources */,
+				D245192E1E7D8488000ECC03 /* Assets.xcassets in Resources */,
+				D245192C1E7D8488000ECC03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D1D2BA193C910B06E941C1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		644B469D43ED3347FE34FB69 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ezshopUser/Pods-ezshopUser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC4E51C36AD8EA294A1B31B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ezshopUser/Pods-ezshopUser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D245191F1E7D8488000ECC03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24519431E7D8BB5000ECC03 /* UserViewController.swift in Sources */,
+				D24519291E7D8488000ECC03 /* ViewController.swift in Sources */,
+				D245194A1E7D967A000ECC03 /* CLFaceDetectionImagePickerViewController.m in Sources */,
+				D245193C1E7D86E1000ECC03 /* JGUtils.swift in Sources */,
+				D245194E1E7D96E7000ECC03 /* kairos.swift in Sources */,
+				D245193D1E7D86E2000ECC03 /* ActivitiyIndicator.swift in Sources */,
+				D245193F1E7D8728000ECC03 /* User.swift in Sources */,
+				D24519411E7D872C000ECC03 /* Item.swift in Sources */,
+				D245194C1E7D967A000ECC03 /* UIImage+CL.m in Sources */,
+				D24519271E7D8488000ECC03 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D245192A1E7D8488000ECC03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D245192B1E7D8488000ECC03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D245192F1E7D8488000ECC03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D24519301E7D8488000ECC03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D24519331E7D8488000ECC03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D24519341E7D8488000ECC03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D24519361E7D8488000ECC03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1A2C175D85E21E953053C9F /* Pods-ezshopUser.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ezshopUser/ezshopUser.entitlements;
+				DEVELOPMENT_TEAM = VQJM9GW22Y;
+				INFOPLIST_FILE = ezshopUser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.jgchoi.ezshopUser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ezshopUser/ezshopUser-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D24519371E7D8488000ECC03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DB79685D4C2A6A6E0AA60A0 /* Pods-ezshopUser.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ezshopUser/ezshopUser.entitlements;
+				DEVELOPMENT_TEAM = VQJM9GW22Y;
+				INFOPLIST_FILE = ezshopUser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.jgchoi.ezshopUser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ezshopUser/ezshopUser-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D245191E1E7D8488000ECC03 /* Build configuration list for PBXProject "ezshopUser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24519331E7D8488000ECC03 /* Debug */,
+				D24519341E7D8488000ECC03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D24519351E7D8488000ECC03 /* Build configuration list for PBXNativeTarget "ezshopUser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24519361E7D8488000ECC03 /* Debug */,
+				D24519371E7D8488000ECC03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D245191B1E7D8488000ECC03 /* Project object */;
+}

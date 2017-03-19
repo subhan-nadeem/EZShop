@@ -17,6 +17,10 @@
 		D20D460F1E7D4D25001113EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20D460E1E7D4D25001113EC /* Assets.xcassets */; };
 		D20D46111E7D5F04001113EC /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D46101E7D5F04001113EC /* UsersTableViewController.swift */; };
 		D20D46131E7D6188001113EC /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D46121E7D6188001113EC /* UserDetailsViewController.swift */; };
+		D21E8BE71E7D63D000316040 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E8BE61E7D63D000316040 /* MySplitViewController.swift */; };
+		D21E8BE91E7D691F00316040 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E8BE81E7D691F00316040 /* User.swift */; };
+		D21E8BEB1E7D695300316040 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E8BEA1E7D695300316040 /* Item.swift */; };
+		D25E55681E7DD4A7000B18D8 /* InventoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E55671E7DD4A7000B18D8 /* InventoriesViewController.swift */; };
 		D2A5C26B1E7CD15100CB7A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5C26A1E7CD15100CB7A92 /* AppDelegate.swift */; };
 		D2A5C2701E7CD15100CB7A92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5C26E1E7CD15100CB7A92 /* Main.storyboard */; };
 		D2A5C2751E7CD15100CB7A92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5C2731E7CD15100CB7A92 /* LaunchScreen.storyboard */; };
@@ -39,6 +43,10 @@
 		D20D460E1E7D4D25001113EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20D46101E7D5F04001113EC /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		D20D46121E7D6188001113EC /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		D21E8BE61E7D63D000316040 /* MySplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySplitViewController.swift; sourceTree = "<group>"; };
+		D21E8BE81E7D691F00316040 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D21E8BEA1E7D695300316040 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D25E55671E7DD4A7000B18D8 /* InventoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoriesViewController.swift; sourceTree = "<group>"; };
 		D2A5C2671E7CD15100CB7A92 /* EZShopManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZShopManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5C26A1E7CD15100CB7A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A5C26F1E7CD15100CB7A92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +130,9 @@
 				D2A5C2871E7CD5E000CB7A92 /* EnrollViewController.swift */,
 				D20D46101E7D5F04001113EC /* UsersTableViewController.swift */,
 				D20D46121E7D6188001113EC /* UserDetailsViewController.swift */,
+				D21E8BE81E7D691F00316040 /* User.swift */,
+				D21E8BEA1E7D695300316040 /* Item.swift */,
+				D25E55671E7DD4A7000B18D8 /* InventoriesViewController.swift */,
 			);
 			path = EZShopManager;
 			sourceTree = "<group>";
@@ -130,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A5C27D1E7CD4BA00CB7A92 /* kairos.swift */,
+				D21E8BE61E7D63D000316040 /* MySplitViewController.swift */,
 			);
 			name = Karios;
 			sourceTree = "<group>";
@@ -270,14 +282,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A5C2881E7CD5E000CB7A92 /* EnrollViewController.swift in Sources */,
+				D21E8BE71E7D63D000316040 /* MySplitViewController.swift in Sources */,
 				D2A5C27E1E7CD4BA00CB7A92 /* kairos.swift in Sources */,
 				D20D46111E7D5F04001113EC /* UsersTableViewController.swift in Sources */,
+				D21E8BEB1E7D695300316040 /* Item.swift in Sources */,
+				D25E55681E7DD4A7000B18D8 /* InventoriesViewController.swift in Sources */,
 				D20D45EC1E7CE031001113EC /* JGUtils.swift in Sources */,
 				D2A5C26B1E7CD15100CB7A92 /* AppDelegate.swift in Sources */,
 				D20D46091E7D4475001113EC /* CLFaceDetectionImagePickerViewController.m in Sources */,
 				D20D45EE1E7CE0C8001113EC /* ActivitiyIndicator.swift in Sources */,
 				D20D460A1E7D4475001113EC /* UIImage+CL.m in Sources */,
 				D20D46131E7D6188001113EC /* UserDetailsViewController.swift in Sources */,
+				D21E8BE91E7D691F00316040 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

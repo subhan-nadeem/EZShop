@@ -10,5 +10,6 @@ target 'EZShopManager' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Kingfisher', '~> 3.0'
 
 end
