@@ -194,7 +194,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
                 }
 
                 if (mItemPickedUp != NO_ITEM_PICKED_UP)
-                    recognize(false, false);
+                    recognize(false, true);
 
                 Log.d(TAG, "Event listener triggered!");
             }
@@ -435,7 +435,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
         alreadyRecognizedFacesList.add(face.getId());
         mLastTriggerTime = System.currentTimeMillis();
         mRecognitionAttempts = 1;
-        recognize(true, true);
+        recognize(true, false);
     }
 
     @Override
@@ -444,7 +444,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
         finish();
     }
 
-    private void recognize(final boolean sayRecognizingMessage, final boolean sayRetryMessage) {
+    private void recognize(final boolean sayRecognizingMessage, final boolean repeat) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -521,6 +521,10 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                                 ttsObj.speak("I couldn't recognize you!", TextToSpeech.QUEUE_ADD, null);
                                                             ++mRecognitionAttempts;
 
+                                                        if (repeat) {
+                                                            ttsObj.speak("Trying again...", TextToSpeech.QUEUE_ADD, null);
+                                                            recognize(false, true);
+                                                        }
                                                     }
                                                 }
                                             });
