@@ -88,7 +88,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
     public static final String KEY_GALLERY_NAME = "gallery_name";
     public static final String KEY_IMAGE = "image";
 
-    public static final float FACE_WIDTH_PROXIMITY_TRIGGER = 130f;
+    public static float FACE_WIDTH_PROXIMITY_TRIGGER = 130f;
 
     public static final int PURPOSE_ENTRANCE = 1;
     public static final int PURPOSE_EXIT = 2;
@@ -169,6 +169,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
 
         mItemPickedUp = NO_ITEM_PICKED_UP;
 
+
         mPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,6 +212,8 @@ public final class FaceTrackingActivity extends AppCompatActivity
 
                 if (mItemPickedUp != NO_ITEM_PICKED_UP)
                     recognize(false, false);
+
+                Log.d(TAG, "Event listener triggered!");
             }
 
             @Override
@@ -463,6 +466,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
             @Override
             public void run() {
 
+                Log.d(TAG, "Attempting to recognize");
                 mProgressBar.setVisibility(View.VISIBLE);
 
                 if (sayRecognizingMessage)
@@ -529,7 +533,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
                                                             onDetectItemEvent(candidate);
 
                                                     } catch (JSONException e1) {
-                                                        e1.printStackTrace();
                                                         Log.e(TAG, e1.toString());
 
                                                         if (mRecognitionAttempts != MAX_RECOGNITION_ATTEMPTS) {
@@ -545,8 +548,8 @@ public final class FaceTrackingActivity extends AppCompatActivity
                             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (Void[]) null);
                         }
                     });
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (RuntimeException e) {
+                    Log.e(TAG, e.toString());
                     Toast.makeText(FaceTrackingActivity.this,
                             "Couldn't take photo! Try again.", Toast.LENGTH_LONG).show();
                 }
@@ -571,6 +574,8 @@ public final class FaceTrackingActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                ttsObj.speak(mItemPersonName + " picked up a "+mItemItemName, TextToSpeech.QUEUE_ADD, null);
+
                 if (!itemAdded)
                 userCartDatabase.child(String.valueOf(dataSnapshot.getChildrenCount()))
                         .setValue(mItemPickedUp);
@@ -579,7 +584,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
                 removeEvents();
                 mItemPickedUp = NO_ITEM_PICKED_UP;
 
-                ttsObj.speak(mItemPersonName + " picked up a "+mItemItemName, TextToSpeech.QUEUE_ADD, null);
             }
 
             @Override
@@ -596,7 +600,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     if (item.child("item_id").getValue().toString().equals(String.valueOf(mItemPickedUp))) {
-                        mItemItemName = item.child("item_id").getValue().toString();
+                        mItemItemName = item.child("item_name").getValue().toString();
                         return;
                     }
                 }
@@ -732,6 +736,8 @@ public final class FaceTrackingActivity extends AppCompatActivity
     private void sendPushNotification(double totalSpent) {
         DecimalFormat df = new DecimalFormat("0.00");
 
+        if (mUserFCMToken.equals("invalid")) return;
+
         JsonObject dataObj = new JsonObject();
         dataObj.addProperty("alert", "Your total is $" + df.format(totalSpent));
 
@@ -801,7 +807,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
     }
 
     private void sayErrorMessage() {
-        ttsObj.speak("You are not enrolled in our database! Please go enroll now.",
+        ttsObj.speak("You are not enrolled in our database!",
                 TextToSpeech.QUEUE_ADD, null);
     }
 
@@ -877,10 +883,6 @@ public final class FaceTrackingActivity extends AppCompatActivity
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    /*Toast.makeText(FaceTrackingActivity.this,
-                            "FACE " + mFaceGraphic.getFace().getId() + " REMOVED",
-                            Toast.LENGTH_SHORT).show();*/
-                   /* ttsObj.speak("You are no longer visible", TextToSpeech.QUEUE_ADD, null);*/
                 }
             });
             mOverlay.remove(mFaceGraphic);
