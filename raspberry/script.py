@@ -11,9 +11,10 @@ pin_1_to_circuit = 7
 pin_2_to_circuit = 29
 pin_3_to_circuit = 31
 
-dark = 60000
+dark = 70000
 light = 0
-refresh_rate = 0.05
+
+refresh_rate = 0.1
 
 item_map = {
     pin_1_to_circuit: 1,
@@ -79,22 +80,25 @@ def rc_time(pin_to_circuit):
     while GPIO.input(pin_to_circuit) == GPIO.LOW:
         count += 1
 
-    print "Sensor: " + str(pin_to_circuit) + " value: " + str(count)
+
+    # print "Sensor: " + str(pin_to_circuit) + " value: " + str(count)
     
     if light < count < dark:
+        print "Light {0} count: {1}".format(item_map[pin_to_circuit], count)
         if (item_status[pin_to_circuit]):
             item_status[pin_to_circuit] = False
             # update_inventory(item_map[pin_to_circuit])
-            print "id: {0} is taken".format(item_map[pin_to_circuit])
+            print "id: {0} is taken. count {1}".format(item_map[pin_to_circuit], count)
 
     else:
+        print "Dark {0} count {1}".format(item_map[pin_to_circuit], count)
         item_status[pin_to_circuit] = True
-        
+
 
 #thread1 = myThread(pin_1_to_circuit)
 thread2 = myThread(pin_2_to_circuit)
-thread3 = myThread(pin_3_to_circuit)
+#thread3 = myThread(pin_3_to_circuit)
 
 #thread1.start()
 thread2.start()
-thread3.start()
+#thread3.start()
