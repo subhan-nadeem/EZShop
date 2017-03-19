@@ -62,15 +62,14 @@ def rc_time(pin_to_circuit):
 
 try:
     while True:
-        item_load = get_item_inventory(item_map[PIN_1_CIRCUIT])
+        item_load = get_item_inventory(item_map[PIN_2_CIRCUIT])
         if (item_load <= 0):
-            print "Inventory of item {0} is at 0".format(item_map[PIN_1_CIRCUIT])
+            print "Inventory of item {0} is at 0".format(item_map[PIN_2_CIRCUIT])
             break
         else:
-            rc_time(PIN_1_CIRCUIT)
+            rc_time(PIN_2_CIRCUIT)
                 
 except KeyboardInterrupt:
     pass
 finally:
     GPIO.cleanup()
-
