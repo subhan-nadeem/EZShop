@@ -89,7 +89,7 @@ public final class FaceTrackingActivity extends AppCompatActivity
     public static final String KEY_GALLERY_NAME = "gallery_name";
     public static final String KEY_IMAGE = "image";
 
-    public static float FACE_WIDTH_PROXIMITY_TRIGGER = 130f;
+    public static float FACE_WIDTH_PROXIMITY_TRIGGER = 200f;
 
     public static final int PURPOSE_ENTRANCE = 1;
     public static final int PURPOSE_EXIT = 2;
