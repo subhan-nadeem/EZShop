@@ -1,4 +1,4 @@
-##Read the viral article about this project [here!](https://medium.freecodecamp.org/how-we-recreated-amazon-go-in-36-hours-e32a4101d5f0)
+## Read the viral article about this project [here!](https://medium.freecodecamp.org/how-we-recreated-amazon-go-in-36-hours-e32a4101d5f0)
 
 Our presentation video link: https://goo.gl/photos/FkMtHoojQa9b82736
 
