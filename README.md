@@ -1,4 +1,6 @@
-Our presenation video link: https://goo.gl/photos/FkMtHoojQa9b82736
+##Read the viral article about this project [here!](https://medium.freecodecamp.org/how-we-recreated-amazon-go-in-36-hours-e32a4101d5f0)
+
+Our presentation video link: https://goo.gl/photos/FkMtHoojQa9b82736
 
 # EZShop
 EZShop is a brick-and-mortar modular shopping infrastructure that provides customers with a completely frictionless shopping experience. Inspired by the recent innovations revealed by Amazon Go, our team ambitiously wanted to recreate the same experience - on a student budget. Furthermore, we wanted to innovate and go one step further - users of Amazon Go have to scan in and out of the store with a barcode to verify their identity. We wanted to remove that friction as well, and we did. With just everyday mobile devices, and a Raspberry Pi, we created EZShop.
